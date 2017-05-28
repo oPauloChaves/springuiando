@@ -2,6 +2,7 @@ package com.opaulochaves.springuiando.domain.store;
 
 import java.util.HashMap;
 import java.util.Map;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @author paulo
  */
+@Slf4j
 @RestController
 public class StoreController {
 
@@ -30,6 +32,7 @@ public class StoreController {
 
     @GetMapping(path = "/stores/{storeId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Store> getStore(@PathVariable Long storeId) {
+        log.debug("Store id {}", storeId);
         if (!STORES.containsKey(storeId)) {
             return ResponseEntity.notFound().build();
         }

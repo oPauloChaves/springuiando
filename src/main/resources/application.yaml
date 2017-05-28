@@ -1,0 +1,15 @@
+spring:
+    profiles:
+        active: development
+logging:
+    config: classpath:logback-console.xml
+
+---
+spring:
+    profiles: production
+logging:
+    config: classpath:logback-file.xml
+
+---
+spring:
+    profiles: development
