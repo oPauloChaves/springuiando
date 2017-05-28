@@ -1,4 +1,9 @@
 spring:
+    jpa:
+        hibernate:
+            naming_strategy: org.hibernate.cfg.EJB3NamingStrategy
+    datasource:
+        initialize: false
     profiles:
         active: development
 logging:
@@ -13,3 +18,20 @@ logging:
 ---
 spring:
     profiles: development
+    datasource:
+        initialize: true
+        
+---
+spring:
+    profiles: in-memory-db
+    datasource:
+        driverClassName: org.h2.Driver
+        url: jdbc:h2:mem:trackr;DB_CLOSE_DELAY\=-1
+        username: springuiando
+        password:
+    jpa:
+        hibernate:
+            dialect: org.hibernate.dialect.H2Dialect
+            ddl-auto: create
+flyway:
+    enabled: false
