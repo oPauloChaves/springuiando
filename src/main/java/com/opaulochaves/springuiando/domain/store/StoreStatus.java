@@ -15,7 +15,7 @@ public enum StoreStatus {
     }
 
     public String getName() {
-        return this.name;
+        return this.toString();
     }
 
     public void setName(String name) {
