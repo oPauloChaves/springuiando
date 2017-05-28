@@ -19,10 +19,10 @@ public class StoreController {
     static final Map<Long, Store> STORES = new HashMap<>();
 
     static {
-        STORES.put(1l, new Store(1l, "First", StoreStatus.ACTIVE));
-        STORES.put(2l, new Store(2l, "Second", StoreStatus.ACTIVE));
-        STORES.put(3l, new Store(3l, "Third", StoreStatus.INACTIVE));
-        STORES.put(4l, new Store(4l, "Fourth", StoreStatus.ACTIVE));
+        STORES.put(1l, new Store(1l, "First", "first@store.com", StoreStatus.ACTIVE));
+        STORES.put(2l, new Store(2l, "Second", "second@store.com", StoreStatus.ACTIVE));
+        STORES.put(3l, new Store(3l, "Third", "third@store.com", StoreStatus.INACTIVE));
+        STORES.put(4l, new Store(4l, "Fourth", "fourth@store.com", StoreStatus.ACTIVE));
     }
 
     @GetMapping(path = "/stores", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -32,7 +32,6 @@ public class StoreController {
 
     @GetMapping(path = "/stores/{storeId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Store> getStore(@PathVariable Long storeId) {
-        log.debug("Store id {}", storeId);
         if (!STORES.containsKey(storeId)) {
             return ResponseEntity.notFound().build();
         }
